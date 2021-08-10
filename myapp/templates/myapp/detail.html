@@ -1,0 +1,22 @@
+{% extends 'myapp/base.html' %}
+
+{% block myhdg %}Hello Nidhi!{% endblock %}
+
+{% block body_block %}
+    {% if cor_list %}
+        <p><b>{{ topName }}</b></p>
+        <p><b> Duration: </b>{{ topLen }} Week(s)</p>
+        <div><b> Course List:</b></div>
+        <div>
+            <ol>
+                {% for cor in cor_list %}
+                    {% if cor.topic|lower == topName|lower %}
+                        <li>{{ cor.title }}</li>
+                    {% endif %}
+                {% endfor %}
+            </ol>
+        </div>
+    {% else %}
+        <strong>There are no available topics!</strong>
+    {% endif %}
+{% endblock %}

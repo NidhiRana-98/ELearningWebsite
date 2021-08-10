@@ -1,0 +1,28 @@
+{% extends 'myapp/base.html' %}
+
+{% block myhdg %}Hello {{ fullname }}!{% endblock %}
+
+{% block body_block %}
+    {% if student %}
+        {% if image %}<img src="{{ image.url }}" height="100" width="100" alt="No Photo">{% endif %}
+
+        <h2>Topics:</h2>
+        <ul>
+            {% for top in interested_in %}
+                <li>{{ top.name }}</li>
+            {% endfor %}
+        </ul>
+        {% if registered.count == 0 %}
+            <strong>No courses selected yet!</strong>
+        {% else %}
+            <h2>Courses:</h2>
+            <ul>
+                {% for cor in registered %}
+                    <li>{{ cor.title }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% else %}
+        You are not a registered student!!
+    {% endif %}
+{% endblock %}

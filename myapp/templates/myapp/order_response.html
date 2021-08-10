@@ -1,0 +1,16 @@
+{% extends 'myapp/base.html' %}
+
+{% block myhdg %}Hello {{ order.Student }}!{% endblock %}
+
+{% block body_block %}
+    {% if courses %}
+        <h2>Ordered Courses:</h2>
+        <ol>
+            {% for cor in courses %}
+                <li>{{ cor.title }}</li>
+            {% endfor %}
+        </ol>
+    {% else %}
+        <strong>No Courses selected!</strong>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'myapp/base.html' %}
+
+{% block myhdg %}{% endblock %}
+
+{% block body_block %}
+    {% if top_list %}
+        <h2>List of Topics</h2>
+        <ol>
+            {% for top in top_list %}
+                <li><a href="{{ top.id }}">{{ top.name }}</a></li>
+            {% endfor %}
+        </ol>
+    {% else %}
+        <strong>There are no available topics!</strong>
+    {% endif %}
+    {% if course_list %}
+    <h2>List of Courses</h2>
+    <ol>
+    {% for course in course_list %}
+        <li>{{ course.title }}</li>
+    {% endfor %}
+    </ol>
+    {% else %}
+    <strong>There are no available courses!</strong>
+    {% endif %}
+    {% if request.session.last_login %}
+        <p>You Last Logged In On {{ request.session.last_login }}</p>
+    {% else %}
+        <p>Your last login was more than one hour ago!</p>
+    {% endif %}
+{% endblock %}
